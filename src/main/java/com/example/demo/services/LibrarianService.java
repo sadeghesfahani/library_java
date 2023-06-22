@@ -49,6 +49,14 @@ public class LibrarianService {
         return this.bookRepository.save(book);
     }
 
+    public Book addBook(String name, String author, Long categoryId) {
+        Book book = new Book();
+        book.setName(name);
+        book.setAuthor(author);
+        book.setCategory(this.categoryRepository.findById(categoryId).orElseThrow());
+        return this.bookRepository.save(book);
+    }
+
     public void deleteBook(Long id) {
         this.bookRepository.deleteById(id);
     }
@@ -119,7 +127,7 @@ public class LibrarianService {
         lend.setReLend(false);
         lend.setLendDate(new Date().toString());
         Date date = new Date();  // your original date
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();  // convert it to LocalDate
+        LocalDate localDate =  LocalDate.now(); // convert it to LocalDate
         LocalDate newLocalDate = localDate.plusMonths(1);  // add one month
         Date newDate = Date.from(newLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());  // convert it back to Date
         lend.setReturnDate(newDate.toString());

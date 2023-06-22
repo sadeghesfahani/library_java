@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "customer")
 @DiscriminatorValue("CUSTOMER")
 public class Customer extends User {
 
@@ -22,4 +21,7 @@ public class Customer extends User {
                 '}';
 
     }
+
+
+
 }

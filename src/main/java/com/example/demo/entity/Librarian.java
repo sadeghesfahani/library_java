@@ -12,7 +12,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "librarian")
 @DiscriminatorValue("LIBRARIAN")
 public class Librarian extends User {
 
